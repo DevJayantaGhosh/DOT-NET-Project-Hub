@@ -1,0 +1,21 @@
+Cookie Authentication
+ClaimsPrincipal
+External identity Provider
+Authentication => who ?
+Cookie
+Identity
+Identity Provider
+Authorization=> Right?
+Asp dot net core Authorization
+
+ClaimsPrincipal
+if(User.Identity.IsAuthenticated)
+Dapper
+ClaimsList==>ClaimsIdentity=>
+ClaimsPrincipal
+
+ClaimsIdentity(Clist.,AuthType, 
+UserName
+C-I-P
+AuthenticationScheme
+await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

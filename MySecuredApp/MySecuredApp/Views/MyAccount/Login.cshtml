@@ -1,0 +1,48 @@
+﻿@model MySecuredApp.MyUserDB.MyUser
+@{
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card-body"><h2>Login</h2></div>
+            <div asp-validation-summary="ModelOnly">
+
+            </div>
+            <div class="content">
+                <form method="post" asp-action="Login" asp-controller="MyAccount" asp-route-returnUrl="@Context.Request.Query["returnUrl"]">
+                    <div class="user-details">
+
+                        <div class="input-box">
+
+                            <input type="text" placeholder="Enter your username" asp-for="UserName" class="form-control">
+                            <span class="text-danger" asp-validation-for="UserName"></span>
+                        </div>
+                    
+
+                        <div class="input-box">
+
+                            <input type="text" placeholder="Enter your password" asp-for="HashPassword" class="form-control">
+                            <span class="text-danger" asp-validation-for="HashPassword"></span>
+                        </div>
+
+
+
+                    </div>
+                    <div>
+                        <input class="btn-block" type="submit" value="Register">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

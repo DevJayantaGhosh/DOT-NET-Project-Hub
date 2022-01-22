@@ -1,0 +1,6 @@
+ "ConnectionStrings": {
+    "StringDatabase": "Server=LAPTOP-DU3M7H5R\\SPARTA;Database=InventoryDB;Trusted_Connection=True;"
+  },
+
+           services.AddDbContext<AppDBContext>(options =>
+         options.UseSqlServer(Configuration.GetConnectionString("StringDatabase")));

@@ -1,0 +1,45 @@
+﻿@{
+
+}
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <!--Forms-->
+                <div class="login-form-mycontainer">
+                    <h1>Login Form</h1>
+                    <form asp-action="MyLogin" method="post" asp-controller="SingleView">
+                        <input type="text" placeholder="Username" class="form-control" name="myUName">
+                        
+                        <br><br>
+                        <input type="password" placeholder="Password" class="form-control" name="myUPass">
+                        <br><br>
+                        <input class="btn-dark btn-block" type="submit" value="Login">
+                    </form>
+                </div>
+            
+             </div>
+                <div class="col-6">
+                    <!--Create mycontainer for Signup form-->
+                    <div class="signup-form-mycontainer">
+                        <h1>Sign Up Form</h1>
+                        <form asp-action="MySignUp" method="post" asp-controller="SingleView">
+                            <input type="text" placeholder="Username" class="form-control" name="myRegiUName">
+                            <br><br>
+                            <input type="email" placeholder="Email" class="form-control" name="myRegiEmail">
+                            <br><br>
+                            <input type="password" placeholder="Password" class="form-control" name="myRegiPass">
+                            <br><br>
+                            <input class="btn-dark btn-block" type="submit" value="Sign-Up">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+

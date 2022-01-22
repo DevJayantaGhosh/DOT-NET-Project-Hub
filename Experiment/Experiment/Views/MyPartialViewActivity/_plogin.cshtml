@@ -1,0 +1,35 @@
+﻿
+
+@model Experiment.ModelViewDTO.LoginViewModel
+@{
+    
+}
+
+
+<div id="login-card" class="card">
+    <div class="card-body">
+        <h2 class="text-center">Login form</h2>
+        <br>
+        <form asp-action="MyLogin" asp-controller="MyPartialViewActivity">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" asp-for="MyUserName">
+                <span asp-validation-for="MyUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="email" placeholder="Enter password" asp-for="MyUserPass">
+                <span asp-validation-for="MyUserPass" class="text-danger"></span>
+            </div>
+            <input type="submit" id="button" class="btn btn-primary deep-purple btn-block " value="Login" />
+            <br>
+            <br>
+
+            <div id="btn" class="text-center">
+                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
+                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
+                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
+            </div>
+
+        </form>
+    </div>
+</div>

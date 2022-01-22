@@ -1,0 +1,117 @@
+asp-for
+asp-valdation-for
+SAI SelectList Asp-Items
+
+IFormCollection
+<partial name=""/>
+<partial name =" model=""/>
+
+launchsetting.json
+appsetting.json
+ConfigurationBuilder()
+
+REST API (dot net core)
+=-=====-=-=-=-=-=-==
+put->all col update
+patch-> partial update
+code-401-Unauthorized
+
+dotnet new webapi --name myproj
+dotnet build
+dotnet run
+HostBuilder
+[Route("app/{x}/author/{y}")]
+[Route("myapp/{x}/author/{y}")]
+method(int x, int y)
+
+
+[Route("[controller]/[action]")]
+
+to ignore the base url
+[Route("~/myOwnurl")]
+method()
+
+*Route Constrainta
+-----------------------
+
+[Route("myOwnurl/{a:int:max(40):minlength(2):regex(a|b|c) }")]
+method(int a)
+IActionResult==>
+Ok(mydata)
+AcceptedAction(give action name)
+BadRequest()
+CretaedAction("GeEmpById",new{id=a.id},animal);
+
+[BindProperties(supportsGet=true)]
+at controller level work on PoST
+
+method([FromQuery] string x)
+/x="jay"
+method([FromRoute] string x)
+/jay
+method([FromRoute] string x,[FromQuery] string y)
+/jay?y=ghosh
+method([FromBody] string x)
+{
+"x": "jay"
+}
+
+[FromHeader]
+-----------------------------
+DI
+-------------------------------
+//for each requests 1
+app.UseScoped<>();
+//1 for all request
+app.UseSingleton<>();
+//
+ap.UseTransient<>();
+method([FromServices] IRepo irepo)
+
+---------------------
+Middliware
+terminal //
+app.Run(it need context Delegate)
+
+
+app.Use(async (context, next)=>{
+cw("ab")
+await next();
+})
+app.Run(it need context Delegate)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

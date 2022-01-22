@@ -1,0 +1,42 @@
+﻿ @model InventoryApp.DTO.ProductResponseListDTO
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Modifed Date</th>
+            <th scope="col">Ref Category ID</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in Model.Products)
+        {
+        <tr>
+            <td>@item.ProdId</td>
+            <td>@item.ProdName</td>
+            <td>@item.ProdPrice</td>
+            <td>@item.CreatedBy</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+
+            <td>@item.CategoryRefNo</td>
+        </tr>
+        }
+
+    </tbody>
+</table>

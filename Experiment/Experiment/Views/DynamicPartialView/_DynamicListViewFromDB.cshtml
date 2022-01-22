@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Experiment.ModelViewDTO.DynamicPartialViewModel>
+@{
+    
+}
+
+
+
+
+<div id="btn" class="text-center p-2">
+    @foreach (var data in Model)
+    {
+        <h4>Controller: @data.ControllerName</h4>
+        <h4>Action : @data.ActionName</h4>
+        <h4>Button Name : @data.ValueName</h4>
+    }
+
+</div>

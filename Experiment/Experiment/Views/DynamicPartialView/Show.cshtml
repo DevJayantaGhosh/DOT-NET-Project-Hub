@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Experiment.ModelViewDTO.DynamicPartialViewModel>
+@{
+    ViewData["Title"] = "Show";
+}
+
+<h1>Show Dynamic Button Link with Partial View</h1>
+@foreach (var x in Model)
+{
+<div class="container p-2">
+    <partial name="_DynamicView" model="@x" />
+</div>
+
+}
+
+<hr />
+<h2>Details: passing the list of data to the partial view </h2>
+<div>
+   
+        <div class="container p-2">
+            <partial name="_DynamicListViewFromDB" model="@Model" />
+        </div>
+
+</div>
+

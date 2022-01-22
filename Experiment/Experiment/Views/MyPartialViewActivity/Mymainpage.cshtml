@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Main page";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Main page</p>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-6">
+            @*@Html.Partial("_plogin") it return string its slow*@
+            <partial name="_plogin"  />
+        </div>
+
+        <div class="col-6">
+            @{Html.RenderPartial("_pRegister");}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <link href="~/css/My.css" rel="stylesheet" />
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

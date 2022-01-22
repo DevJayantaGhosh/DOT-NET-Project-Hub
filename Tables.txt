@@ -1,0 +1,65 @@
+ //Not added Authors because only saving Author not making sense but it will create the Table as There Is entity Author Present in Book so . indirectly linked with this DBContext
+But Publisher Not Linked so Not Created  that Publisher Table in DB
+
+
+        [Key]
+        public int CategoryNo { get; set; }
+
+        [Required]
+        [DisplayName("Category Name")]
+        [MaxLength(50,ErrorMessage ="The max length is 50")]
+        public string CategoryName { get; set; }
+
+        public ICollection<Product> Products { get; set; }
+
+
+
+
+=============
+        [Key]
+        public int ProdId { get; set; }
+        [Required]
+        public string ProdName { get; set; }
+        [Required]
+        public decimal ProdPrice { get; set; }
+
+       [ForeignKey("RefCategory")] //if you want to make different name of your foreign key "RefCategory" is same Line no 21
+        public int CategoryRefNo { get; set; }
+        public Category RefCategory { get; set; }
+
+==============================================If List the Add childList to Parent and Update Parent
+
+
+        [HttpPost]
+        public IActionResult SaveProd(ProductRequestDTO productRequestDTO)
+        {
+           
+            //get Parent Category
+            int catID = productRequestDTO.Product.CategoryRefNo;
+            Category category = this.appDBContest.Categories.Find(catID);
+
+            //Add category to the Product
+            Product p = new Product();
+            p.ProdName = productRequestDTO.Product.ProdName;
+            p.ProdPrice = productRequestDTO.Product.ProdPrice;
+            p.CreatedBy = "Jayanta";
+            p.CreatedDate = DateTime.Now;// when u use parent to update then not set it
+            p.ModifiedDate = DateTime.Now;
+
+
+            //p.RefCategory = category;         //////Add parent to the child and save child                            
+            //this.appDBContest.Add(p);//save child
+            //appDBContest.SaveChanges();
+
+            /////====================Parent should be added OneTime  next time update====================//////
+            List<Product> listp = new List<Product>();
+            listp.Add(p);
+            category.Products = listp;   ///// add child to parent                        
+            this.appDBContest.Update(category);//Update parent
+            this.appDBContest.SaveChanges();
+
+
+
+
+            return RedirectToAction("Index");
+        }

@@ -1,0 +1,14 @@
+﻿@model Experiment.ModelViewDTO.DynamicPartialViewModel
+@{
+    string valName = Model.ValueName;
+}
+
+
+
+
+<div id="btn" class="text-center p-2">
+    <form asp-action="@Model.ActionName" asp-controller="@Model.ControllerName" >
+        <input type="submit"  class="btn btn-danger" value="@Model.ValueName" />
+    </form>
+
+</div>

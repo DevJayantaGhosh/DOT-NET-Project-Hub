@@ -1,0 +1,40 @@
+﻿@model InventoryApp.DTO.CategoryResponseListDTO
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<div class="container-fluid">
+    <a class=" btn btn-block" asp-controller="Category" asp-action="SaveCategory">Add-Category</a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Modifed Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Category item in Model.Categorys)
+        {
+        <tr>
+            <td>@item.CategoryNo</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CreatedBy</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+        </tr>
+                }
+
+           
+
+        </tbody>
+</table>
