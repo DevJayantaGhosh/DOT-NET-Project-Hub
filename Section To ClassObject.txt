@@ -1,0 +1,28 @@
+
+            //AppSettingSection ---> AppSettings
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+            var appSettingValues = appSettingsSection.Get<AppSettings>();
+
+
+S C class Section
+GetSection  Get 
+Value
+    //service <--------- Configuration<Class> <------- section
+            services.Configure<AppSettings>(appSettingsSection);
+            var appS = Configuration.GetSection("AppSettings").Get<AppSettings>();
+
+
+
+------------
+ private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        private readonly AppSettings _appsettngs;
+
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,IOptions<AppSettings> options)
+        {
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._appsettngs =options.Value;
+        }

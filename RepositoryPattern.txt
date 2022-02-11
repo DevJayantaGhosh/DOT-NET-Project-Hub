@@ -1,0 +1,107 @@
+School 1:N Student 
+Student N:1 School 
+student 1:1 Idcard
+student N:N
+ Set up EF_Core
+----------------------------
+demo.DataLayer (class lib)
+ install -> ef core, sql server(provider)
+ef core tools (for migration command)
+
+Add  SchoolDBContext: DbContext
+
+Add Entities
+
+[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+[Key]
+
+School{
+
+public Icollection<Student> students;
+}
+
+Student{
+
+public School school;
+public IDCard idCard;
+public Icollection<Subject> subjects;
+}
+
+IDCard{
+
+public Student student;-? X
+public int studentID
+
+OR
+[ForeignKey("StudentRefID")]
+public Student student
+}
+Subject{
+
+public Icollection<Student> stu dents;
+}
+
+---------------------------------------
+public class Standard
+{
+    public int StandardId { get; set; }
+    public string StandardName { get; set; }
+    
+    public ICollection<Student> Students { get; set; }
+}
+
+
+public class Student
+{
+    public int StudentID { get; set; }
+    public string StudentName { get; set; }
+        
+  1.[ForeignKey("Standard")]
+  2. public int StandardRefId { get; set; }
+   3. public Standard Standard { get; set; }
+
+	OR
+
+    public int StandardRefId { get; set; }
+    [ForeignKey("StandardRefId")]
+    public Standard Standard { get; set; }
+
+
+
+
+in one y has Many x Section End add 
+Icollection<x> xlist;
+In x
+add FK ("yRef")]
+}
+
+===========================
+Reppsitory Pattern
+Model
+Data.DebContext
+public interface IRepo<T> where T: class{
+
+void Add(T entity);
+void Update(T entity);
+void AddRange(IEnumerable<T> entities);
+void Remove(T entity);
+void RemoveRange(IEnumerable<T> entities);
+T Get(int id)
+IEnumerable<T> GetAll();
+
+IEnumerable<T> Find(Expression <Func<T,bool>> predicate);
+
+//context.set<T>().find(predicate)
+
+}
+
+SchoolRepoImpl: BaseRepositoryImpl<Schhol>, IschoolRepo{
+ctor(MyDBContext c):base(c){}
+}
+
+
+
+
+
+
+

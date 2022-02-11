@@ -1,0 +1,19 @@
+1. create(){
+TempData.msg="set msg after create"
+redirectTo(index)
+}
+
+
+.2. index(){
+//extract the msg
+viewBag.x= TempData['msg']
+}
+
+3. in the index.cshtml
+
+
+@if(viewbag.x!=null || viewbag.x!=' ')
+{
+showSweetAlert()
+//showModel()
+}
