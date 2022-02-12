@@ -16,10 +16,15 @@ namespace Experiment.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration configuration;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration c)
+        private readonly IDisplay consoleDisplay;
+        private readonly IDisplay appDisplay;
+
+        public HomeController(ILogger<HomeController> logger, IConfiguration c, IDisplayImplResolver iDresolver)
         {
             this.configuration = c;
             _logger = logger;
+            this.consoleDisplay = iDresolver.GetDisplayImplByName("CONSOLE");
+            this.appDisplay = iDresolver.GetDisplayImplByName("APPOrAnything");
         }
 
         public IActionResult Index()
@@ -28,10 +33,14 @@ namespace Experiment.Controllers
             string comp = configuration.GetSection("Developer:Comapany").Value;
             ViewBag.comdata = comp;
 
+            //var data = configuration["Developer:Company"];
+
             Developer dev = new Developer();
             dev = configuration.GetSection("Developer").Get<Developer>();
             //DevName == devname only same name mappe to same property
 
+            consoleDisplay.show();
+            appDisplay.show();
 
             return View(dev);
         }

@@ -1,4 +1,5 @@
 using Experiment.DAL;
+using Experiment.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,16 @@ namespace Experiment
             {
                 option.UseSqlServer(Configuration.GetConnectionString("Database"));
             });
+
+
+
+            //IDisplay has two implementation ConsoleDisplay  AppDisplay
+            //Then create IDisplayImplResolver  --> DisplayImplResoler here use IserviceProvider.GetService<ImplClassName>()
+           // return _serviceProvider.GetService<ConsoleDisplay>();
+            services.AddScoped<IDisplayImplResolver, DisplayImplResolver>();
+            services.AddScoped<ConsoleDisplay>();
+            services.AddScoped<AppDisplay>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
