@@ -1,5 +1,7 @@
-﻿using Experiment.Models;
+﻿using Experiment.Helper;
+using Experiment.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,15 +14,26 @@ namespace Experiment.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration c)
         {
+            this.configuration = c;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            Console.WriteLine("Tophead:innerKey");
+            string comp = configuration.GetSection("Developer:Comapany").Value;
+            ViewBag.comdata = comp;
+
+            Developer dev = new Developer();
+            dev = configuration.GetSection("Developer").Get<Developer>();
+            //DevName == devname only same name mappe to same property
+
+
+            return View(dev);
         }
 
         public IActionResult Privacy()
